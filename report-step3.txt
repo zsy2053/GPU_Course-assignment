@@ -1,0 +1,20 @@
+Step 3
+Shuyang Zang
+My steps for finding the bug are as follow.
+
+1. Downloading the source code of computeHash.cu and two input files.
+
+2. Making my program and and find the error in line 22 in computeHash.cu
+
+3. Trying to change the inputChunkSize into inputChunkSize = inputChunkSize - inputChunkSize % 4 
+
+
+
+
+
+
+
+
+
+
+

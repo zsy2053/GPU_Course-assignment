@@ -1,0 +1,22 @@
+Step 2 Result
+Shuyang Zang
+Step 1
+Shuyang
+Zang
+==5791== NVPROF is profiling process 5791, command: ./vectorAdd
+N   2.000000   GPUmax   2147481344.000000   CPUmax   2147481344.000000   GPUtime   0.001340   CPUtime   0.000710   GPUSpeedup   0.529563
+N   8.000000   GPUmax   2147483008.000000   CPUmax   2147483008.000000   GPUtime   0.001645   CPUtime   0.002844   GPUSpeedup   1.728697
+N   32.000000   GPUmax   2147483648.000000   CPUmax   2147483648.000000   GPUtime   0.002805   CPUtime   0.011349   GPUSpeedup   4.045580
+
+N   2.000000   GPUmax   1845.000000   CPUmax   1845.000000   GPUtime   0.001340   CPUtime   0.000714   GPUSpeedup   0.532926
+N   8.000000   GPUmax   227.000000   CPUmax   227.000000   GPUtime   0.001646   CPUtime   0.002867   GPUSpeedup   1.741400
+N   32.000000   GPUmax   51.000000   CPUmax   51.000000   GPUtime   0.002807   CPUtime   0.011460   GPUSpeedup   4.082152
+==5791== Profiling application: ./vectorAdd
+==5791== Profiling result:
+==5791== Metric result:
+Invocations                               Metric Name                        Metric Description         Min         Max         Avg
+Device "GeForce GTX 980 (0)"
+        Kernel: arradd(float*)
+        510                             inst_executed                     Instructions Executed     6111232    97779712    46373466
+        Kernel: erredd(float*)
+        510                             inst_executed                     Instructions Executed     6111232    97779712    46373466

@@ -1,0 +1,40 @@
+Step1 algorithm explaination
+Shuyang Zang
+In my code, there are two kernels, one is responsible for getting the minimum number in an array, the other one is responsible for getting the maximum number in this array. Generally, there are 512 threads and 128 rows in each block, then I used the method of reduction to get the maximum and minimum value in each block. Here is a brief description for my algorithm.
+
+__global__ void arradd( float *A)
+{
+
+__shared__ float max[512];
+
+int arrayIndex = 128*512*blockIdx.y + 512*blockIdx.x + threadIdx.x;
+max[threadIdx.x] = A[arrayIndex];
+
+__syncthreads();
+int nTotalThreads = blockDim.x;
+
+while(nTotalThreads > 1)
+	{
+		int halfPoint = (nTotalThreads >> 1);	
+		if (threadIdx.x < halfPoint)
+		{
+                        float temp = max[threadIdx.x + halfPoint];
+			if (temp > max[threadIdx.x]) max[threadIdx.x] = temp;
+		}
+		__syncthreads();
+
+		nTotalThreads = (nTotalThreads >> 1);	// divide by two.
+	}
+if (threadIdx.x == 0)
+	{
+		A[128*blockIdx.y + blockIdx.x] = max[0];
+	}
+}
+
+In the code above, there is a while loop. With each iteration of the while loop, the number of calculations to be done is cut in half. In this case, the block consists of 512 threads. The first time the while loop executes, threads from 0 to 255 will compare their maximum, minimum values with those of threads from 256 to 512. The results are stored in shared memory indexes from 0 to 128. The next time the while loop executes, only threads from 0 to 126 will be active, and so on. Thus can get the maximum values and minimum values from each block, then I transfer the results back to CPU and keep recalling the kernel (each time reduced the number of blocks as 50%) until there is only one block left. Then I just transfer this block into kernel and then get the final result.
+
+
+
+
+
+
