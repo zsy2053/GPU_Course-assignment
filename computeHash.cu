@@ -1,4 +1,4 @@
-/*$Id: computeHash.cu 2016-02-05 19:42:18 (author: Reza Mokhtari)$*/
+
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/stat.h>
