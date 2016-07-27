@@ -1,4 +1,4 @@
-/*$Id: imageFilter.cu 2016-03-04 18:27:54 (author: Reza Mokhtari)$*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
